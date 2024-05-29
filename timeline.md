@@ -6,7 +6,8 @@
 > Deadline : _June 1st_
 
 ### Version 2
-- Create classes for all aspects of the game / Both
+- Create class for player / Taras
+- Create class for enemys / Trey
 > Deadline : _June 5th_
 
 ### Version 3
