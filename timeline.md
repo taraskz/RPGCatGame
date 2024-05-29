@@ -2,7 +2,7 @@
 ### Version 1
 - Create Intro to the game / Trey
 - Create Map and Movement / Taras
-- [] 
+- Create the Main Menu / Taras
 > Deadline : _June 1st_
 
 ### Version 2
