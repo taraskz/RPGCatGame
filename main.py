@@ -1,7 +1,18 @@
+##############################################################################
+# Title: RPG_Cat_Game
+# Class: CS 30
+# Date: May 30, 2024
+# Coders: Taras K and Trey Z
+# Version: 001
+##############################################################################
+'''This program is a text based game where the player gets to explore and 
+fight enemies using cats, the goal is to save the catverse by defeating the 
+main villian
+'''
+##############################################################################
+#---imports and global variables----------------------------------------------
 from game_map import export_map, read_map
 
-export_map()
-#read_map()
 
 rooms = {
     "Outscirts of Catville": "You are in the starting area of the game, \
@@ -24,8 +35,14 @@ you can buy anything your hearts desires",
 hopefully you are strong enough to defeat him this time. GOOD LUCK!!!"
 }
 
+
+#---functions-----------------------------------------------------------------
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
-    
+
+
+#---main----------------------------------------------------------------------
+export_map()
+#read_map()
