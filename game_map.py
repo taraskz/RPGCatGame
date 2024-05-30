@@ -12,7 +12,7 @@ tile = ["Outscirts of Catville", "Catville City", "Catlands",
 tiles = [
     [tile[0],tile[2],tile[4]],
     [tile[3], tile[1], tile[6]],
-    [tile[5], tile[7], tile[8]]
+    [tile[7], tile[5], tile[8]]
     ]
 
 

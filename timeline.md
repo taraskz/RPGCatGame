@@ -15,6 +15,9 @@
 - Create Battle feature / Taras
 > Deadline : _June 11th_
 
+### Beta Testing
+> Deadline : _June 12th_
+
 ### Version 4 
 - Fix code/errors after beta testing / Both
 > Deadline : _June 14th_
