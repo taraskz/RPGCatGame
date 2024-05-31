@@ -54,14 +54,34 @@ directions = {
 current_location = "Outscirts of Catville"
 
 #---functions-----------------------------------------------------------------
+def movement(direction):
+    '''This function handles the movement input of the user in the menu'''
+    global current_location
+    new_x = room_location[current_location][0] + directions[direction][0]
+    new_y = room_location[current_location][1] + directions[direction][1]
+    new_location = (new_x, new_y)
+    # conditional brancing for user input
+    if new_location in room_location.values():
+        current_location = next(room for room, index in room_location.items()
+                               if index == new_location)
+    else:
+        print("Unfortunetly you can't leave the land of cats try a different \
+direction, unless you want to end the game :(")
 
 
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
-
+    while True:
+        choice = input("Choose your action: ")
+        if choice == 'move':
+            direction = input("choose: ")
+            if direction in directions:
+                movement(direction)
+            print(current_location)
 
 #---main----------------------------------------------------------------------
 export_map()
+menu()
 #read_map()
