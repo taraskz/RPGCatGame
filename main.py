@@ -35,8 +35,27 @@ you can buy anything your hearts desires",
 hopefully you are strong enough to defeat him this time. GOOD LUCK!!!"
 }
 
+room_location = {
+    "Outscirts of Catville": (0,0), "Catlands": (1,0), "Lake \
+MacCatzie": (2,0), "Mount Caterest": (0,-1), "Catville City": (1,-1),
+    "Catpagne Beach": (2,-1), "Cat-Street Mall": (0,-2), "Catana Desert\
+": (1,-2), "Cat Ruins": (2,-2)
+}
+
+
+directions = {
+    "north": (0,1),
+    "south": (0,-1),
+    "west": (-1,0),
+    "east": (1,0)
+}
+
+
+current_location = "Outscirts of Catville"
 
 #---functions-----------------------------------------------------------------
+
+
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
