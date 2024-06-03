@@ -4,4 +4,4 @@
 ### May 30th
 - Taras : Made a description of all the locations on the map in an array, added the header.
 ### May 31st
-- Taras: Created arrays for direction options and assigned values for room location and current location
+- Taras: Created arrays for direction options and assigned values for room location and current location. Made a function that takes input of the user and updates the x and y values to move him around the map, tested it by making simple input statement in menu and it works.

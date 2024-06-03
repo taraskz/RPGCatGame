@@ -69,17 +69,34 @@ def movement(direction):
 direction, unless you want to end the game :(")
 
 
+def movement_menu():
+    '''This function is a sub menu that handles the movement
+    of the user based on their input
+    '''
+    while True:
+        print("Here are your movement options or type 'back' \
+if you want to go back to the menu.")
+        for direction in directions:
+            print(f"- {direction}")
+        direction = input("Choose: ")
+        if direction in directions:
+            movement(direction)
+            return
+        elif direction == 'back':
+            return
+        else: 
+            print("Invalid direction plase type it in propertly!<3")
+            
+
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
     while True:
+        print(f"You are currently in {current_location}")
         choice = input("Choose your action: ")
         if choice == 'move':
-            direction = input("choose: ")
-            if direction in directions:
-                movement(direction)
-            print(current_location)
+            movement_menu()
 
 #---main----------------------------------------------------------------------
 export_map()
