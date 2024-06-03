@@ -88,15 +88,50 @@ if you want to go back to the menu.")
             print("Invalid direction plase type it in propertly!<3")
             
 
+
+def introduction():
+    '''This function prints out the introduction of the game so the user
+    understands how to play. They can skip it if they want to in the menu 
+    funtion
+    '''
+    print("***Welcome player, to the lands of cats and prosperity***")
+    print("Here is an explanation as to what is happeing in the world \
+and your mission to save the world.\n")
+    print("***Long ago in the land of cats... Everyone lived peacefully \
+amongst each other, enjoying nature and each others company. Both humans \
+and cats found a way to coexit.\n")
+    print("However an evil person by the name of Clawmancer Felisar came \
+from the forgotten place called the cat ruins. Him and his gang of evil cats \
+and humans are trying to take over the land of cats in order to control \
+everyone.")
+    print("No one really knows why he's doing this but many speculate it's \
+because of his childhood. But thats besides the point.\n")
+    print("***We have summoned you here from another world in hopes that you \
+can defeat his army and save the lands of cats.")
+    print("Go ahead and explore the many places in this wonderful land \
+while trying to find good cat companions that will help you in your quest. \
+Good Luck!!!<3")
+
+
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
+    print("Welcome human do you want to hear the introduction? 'yes' or 'no'")
+    intro = input("Choose: ")
+    if intro == 'yes':
+        introduction()  
+    elif intro == 'no':
+        pass
+    else:
+        print("Invalid input please type in your action propertly!<3")
     while True:
         print(f"You are currently in {current_location}")
         choice = input("Choose your action: ")
         if choice == 'move':
             movement_menu()
+        else:
+            print("Invalid input please type in your action propertly!<3")
 
 #---main----------------------------------------------------------------------
 export_map()
