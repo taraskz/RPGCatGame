@@ -13,9 +13,11 @@ main villian
 #---imports and global variables----------------------------------------------
 from game_map import export_map, read_map
 from player import Player
+from inventory import Inventory
 
 
 player = Player(name = "Cat Master")
+inventory = Inventory()
 
 
 rooms = {
@@ -140,6 +142,8 @@ def menu():
         elif choice == 'map':
             print("Here you go <3")
             read_map()
+        elif choice == 'inventory':
+            inventory.read_inventory()
         else:
             print("Invalid input please type in your action propertly!<3")
 
