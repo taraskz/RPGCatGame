@@ -130,11 +130,16 @@ def menu():
     else:
         print("Invalid input please type in your action propertly!<3")
     while True:
-        read_map()
         print(f"You are currently in {current_location}")
-        choice = input("Choose your action: ")
-        if choice == 'move':
+        choice = input("Choose your action: ").lower()
+        if choice == 'options':
+            print("Type 'move' to move around the map")
+            print("Type 'map' to view the map")
+        elif choice == 'move':
             movement_menu()
+        elif choice == 'map':
+            print("Here you go <3")
+            read_map()
         else:
             print("Invalid input please type in your action propertly!<3")
 
