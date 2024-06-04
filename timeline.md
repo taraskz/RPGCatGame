@@ -6,7 +6,7 @@
 > Deadline : _June 1st_
 
 ### Version 2
-- Create class for player / Taras
+- Create class for player and inventory / Taras
 - Create class for enemys / Trey
 > Deadline : _June 5th_
 

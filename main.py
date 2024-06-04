@@ -3,7 +3,7 @@
 # Class: CS 30
 # Date: May 30, 2024
 # Coders: Taras K and Trey Z
-# Version: 001
+# Version: 002
 ##############################################################################
 '''This program is a text based game where the player gets to explore and 
 fight enemies using cats, the goal is to save the catverse by defeating the 
@@ -12,6 +12,10 @@ main villian
 ##############################################################################
 #---imports and global variables----------------------------------------------
 from game_map import export_map, read_map
+from player import Player
+
+
+player = Player(name = "Cat Master")
 
 
 rooms = {
@@ -126,6 +130,7 @@ def menu():
     else:
         print("Invalid input please type in your action propertly!<3")
     while True:
+        read_map()
         print(f"You are currently in {current_location}")
         choice = input("Choose your action: ")
         if choice == 'move':
