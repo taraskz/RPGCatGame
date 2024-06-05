@@ -21,7 +21,7 @@ inventory = Inventory()
 
 
 rooms = {
-    "Outscirts of Catville": "You are in the starting area of the game, \
+    "Outskirts of Catville": "You are in the starting area of the game, \
 here you can get your first cat companion if you manage to defeat an enemy",
     "Catlands": "You are in the lands of cats, here is where most non \
 combat cats live in peace",
@@ -42,7 +42,7 @@ hopefully you are strong enough to defeat him this time. GOOD LUCK!!!"
 }
 
 room_location = {
-    "Outscirts of Catville": (0,0), "Catlands": (1,0), "Lake \
+    "Outskirts of Catville": (0,0), "Catlands": (1,0), "Lake \
 MacCatzie": (2,0), "Mount Caterest": (0,-1), "Catville City": (1,-1),
     "Catpagne Beach": (2,-1), "Cat-Street Mall": (0,-2), "Catana Desert\
 ": (1,-2), "Cat Ruins": (2,-2)
@@ -57,7 +57,7 @@ directions = {
 }
 
 
-current_location = "Outscirts of Catville"
+current_location = "Outskirts of Catville"
 
 #---functions-----------------------------------------------------------------
 def movement(direction):
@@ -66,12 +66,12 @@ def movement(direction):
     new_x = room_location[current_location][0] + directions[direction][0]
     new_y = room_location[current_location][1] + directions[direction][1]
     new_location = (new_x, new_y)
-    # conditional brancing for user input
+    # conditional branching for user input
     if new_location in room_location.values():
         current_location = next(room for room, index in room_location.items()
                                if index == new_location)
     else:
-        print("Unfortunetly you can't leave the land of cats try a different \
+        print("Unfortunately you can't leave the land of cats try a different \
 direction, unless you want to end the game :(")
 
 
@@ -91,7 +91,7 @@ if you want to go back to the menu.")
         elif direction == 'back':
             return
         else: 
-            print("Invalid direction plase type it in propertly!<3")
+            print("Invalid direction please type it in properly!<3")
             
 
 
@@ -100,46 +100,63 @@ def introduction():
     understands how to play. They can skip it if they want to in the menu 
     funtion
     '''
-    print("***Welcome player, to the lands of cats and prosperity***")
-    print("Here is an explanation as to what is happeing in the world \
-and your mission to save the world.\n")
-    print("***Long ago in the land of cats... Everyone lived peacefully \
-amongst each other, enjoying nature and each others company. Both humans \
-and cats found a way to coexit.\n")
-    print("However an evil person by the name of Clawmancer Felisar came \
-from the forgotten place called the cat ruins. Him and his gang of evil cats \
-and humans are trying to take over the land of cats in order to control \
+    print("You can quit by typing 'quit'!!!")
+    print("Welcome human do you want to hear the introduction? 'yes' or 'no'")
+    while True:
+        int_choice = input("Choose: ")
+        if int_choice == 'yes':
+            print("***Welcome player, to the lands of cats and prosperity\
+***")
+            print("Here is an explanation as to what is happening in the \
+world and your mission is to save the world.\n")
+            print("***Long ago in the land of cats... Everyone lived \
+peacefully amongst each other, enjoying nature and each others company.\
+Both humans and cats found a way to coexist.\n")
+            print("However an evil person by the name of Clawmancer Felisar \
+came from the forgotten place called the cat ruins. Him and his gang of evil \
+cats and humans are trying to take over the land of cats in order to control \
 everyone.")
-    print("No one really knows why he's doing this but many speculate it's \
-because of his childhood. But thats besides the point.\n")
-    print("***We have summoned you here from another world in hopes that you \
-can defeat his army and save the lands of cats.")
-    print("Go ahead and explore the many places in this wonderful land \
-while trying to find good cat companions that will help you in your quest. \
-Good Luck!!!<3")
+            print("No one really knows why he's doing this but many \
+speculate it's because of his childhood. But thats besides the point.\n")
+            print("***We have summoned you here from another world in hopes \
+that you can defeat his army and save the lands of cats.")
+            print("Go ahead and explore the many places in this wonderful \
+land while trying to find good cat companions that will help you in your \
+quest. Good Luck!!! <3")
+            return
+        elif int_choice == 'no':
+            return
+        elif int_choice == 'quit':
+            game_exit()
+        else:
+            print("Please type the right input, thanks. <3")
 
+def intro():
+    '''This function is the intro to the game to get the user started'''
+    introduction()
+    while True:
+        print("Choose your starting cat!!!")
+        print("Options: ")
+        cat_choice = input("Choose: ")
+        if cat_choice == 'n':
+            return
 
+    
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
-    inventory.export_inventory()
-    print("Welcome human do you want to hear the introduction? 'yes' or 'no'")
-    intro = input("Choose: ")
-    if intro == 'yes':
-        introduction()  
-    elif intro == 'no':
-        pass
-    else:
-        print("Invalid input please type in your action propertly!<3")
     inventory.pickup_inventory("apple") # test
     inventory.export_inventory()
     while True:
         print(f"You are currently in {current_location}")
         choice = input("Choose your action: ").lower()
         if choice == 'options':
+            print("Type 'quit' to quit the game")
             print("Type 'move' to move around the map")
             print("Type 'map' to view the map")
+        elif choice == 'quit':
+            game_exit()
         elif choice == 'move':
             movement_menu()
         elif choice == 'map':
@@ -148,9 +165,21 @@ def menu():
         elif choice == 'inventory':
             inventory.view_inventory()
         else:
-            print("Invalid input please type in your action propertly!<3")
+            print("Invalid input please type in your action properly!<3")
 
+
+def game_exit():
+    '''This function leaves the game for the user when they want to quit'''
+    print("Thanks for player, hope you had a great time <3")
+    exit()
+
+
+def game():
+    '''This function calls other function and acts as a main game'''
+    export_map()
+    intro()
+    menu()
+    
 #---main----------------------------------------------------------------------
-export_map()
-menu()
+game()
 #read_map()
