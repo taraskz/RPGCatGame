@@ -4,16 +4,15 @@ class Inventory:
         self.backpack = {}
         self.inventory_file = 'inv.txt'
 
-    def pickup_inventory(self):
+    def pickup_inventory(self, item):
         '''This function allows items to be picked up and stored'''
         self.backpack[item] = True
 
     def view_inventory(self):
-        '''This function prints the inventory and the items in it'''
         print("In backpack: ")
         for item in self.backpack:
             print(f"- {item}")
-
+    
     def export_inventory(self):
         '''Creates the inventory'''
         try:

@@ -123,6 +123,7 @@ def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
+    inventory.export_inventory()
     print("Welcome human do you want to hear the introduction? 'yes' or 'no'")
     intro = input("Choose: ")
     if intro == 'yes':
@@ -131,6 +132,8 @@ def menu():
         pass
     else:
         print("Invalid input please type in your action propertly!<3")
+    inventory.pickup_inventory("apple") # test
+    inventory.export_inventory()
     while True:
         print(f"You are currently in {current_location}")
         choice = input("Choose your action: ").lower()
@@ -143,7 +146,7 @@ def menu():
             print("Here you go <3")
             read_map()
         elif choice == 'inventory':
-            inventory.read_inventory()
+            inventory.view_inventory()
         else:
             print("Invalid input please type in your action propertly!<3")
 
