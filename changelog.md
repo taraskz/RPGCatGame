@@ -1,4 +1,4 @@
-# Changelong
+# Changelog
 ### May 29th
 - Taras : Finished the creation and printing of our map and can call it in the main game.
 ### May 30th
@@ -9,3 +9,7 @@
 - Taras: Made a sub menu for movement to better handle the user input and called it in main menu. Also created the intro, might make a intro menu so that there is some kind of a reward at the start just like in my text based game.
 ### June 4th
 - Taras: Made a simple player class that has health and name of player, maybe will add something like an ability but probably wont fit into this game. Improved the menu by adding an option feature to print of the options to the user and choose and action between map and move so far. Made a simple inventory class but will have to fix it up as I think there is two functions that do the same thing.
+### June 5th
+- Taras: created a skippable introduction by making a intro() function then will make a intro thing where the user gets to pick a starting cat to fight with at the begginging of the game. Need to make a class for that.
+### June 6th
+- Trey: Edited some of the code, created classes for enemies and came up with the idea of having to kill the dog miniboss and getting the bone key in order to challenge clawmancer felisar.

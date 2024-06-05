@@ -1,5 +1,5 @@
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓
-┃ Outscirts of Catville ┃ Catlands       ┃ Lake MacCatzie ┃
+┃ Outskirts of Catville ┃ Catlands       ┃ Lake MacCatzie ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━┫
 ┃ Mount Caterest        ┃ Catville City  ┃ Catpagne Beach ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━┫

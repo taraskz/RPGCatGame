@@ -14,10 +14,21 @@ main villian
 from game_map import export_map, read_map
 from player import Player
 from inventory import Inventory
+from cat import Cat
 
 
 player = Player(name = "Cat Master")
 inventory = Inventory()
+
+
+available_cats = {
+    "Sphynx": Cat(name = "Sphynx", damage = 10, health = 50),
+    "Ragdoll": Cat(name = "Ragdoll", damage = 15, health = 40)
+    
+}
+
+
+player_cats = []
 
 
 rooms = {
@@ -137,17 +148,24 @@ def intro():
     while True:
         print("Choose your starting cat!!!")
         print("Options: ")
-        cat_choice = input("Choose: ")
-        if cat_choice == 'n':
+        for cat_name, cat in available_cats.items():
+            print(f"- {cat_name}: {cat}")
+        cat_choice = input("Choose: ").capitalize()
+        if cat_choice in available_cats:
+            chosen_cat = available_cats[cat_choice]
+            player_cats.append(chosen_cat)
+            print(f"You chose {chosen_cat.name} as your first cat")
             return
+        elif cat_choice == 'quit':
+            game_exit()
+        else:
+            print("Invalid choice, please choose a valid cat name! <3")
 
-    
+
 def menu():
     '''This function acts as the main menu where the player gets to choose 
     what action to do whenever they want to
     '''
-    inventory.pickup_inventory("apple") # test
-    inventory.export_inventory()
     while True:
         print(f"You are currently in {current_location}")
         choice = input("Choose your action: ").lower()

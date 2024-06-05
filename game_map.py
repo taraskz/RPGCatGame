@@ -2,7 +2,7 @@ from tabulate import tabulate
 
 
 # name of each of the locations on the map converted into a tile
-tile = ["Outscirts of Catville", "Catville City", "Catlands",
+tile = ["Outskirts of Catville", "Catville City", "Catlands",
     "Mount Caterest", "Lake MacCatzie", "Catanna Desert",
     "Catpagne Beach", "Cat-Street Mall", "Cat Ruins"
        ]
