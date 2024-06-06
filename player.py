@@ -10,6 +10,6 @@ class Player:
         if self.health < 0:
             self.health = 0
 
-    def player_is_alive(self):
+    def is_alive(self):
         '''Checks if player is alive'''
         return self.health > 0

@@ -15,6 +15,7 @@ from game_map import export_map, read_map
 from player import Player
 from inventory import Inventory
 from cat import Cat
+from enemies import Enemy
 
 
 player = Player(name = "Cat Master")
@@ -104,6 +105,19 @@ if you want to go back to the menu.")
             return
         else: 
             print("Invalid direction please type it in properly!<3")
+
+
+def battle():
+    '''This function activates when there are enemies in the area the user
+    is in and they are forced to fight them, if they lose the game ends if 
+    they win they get a reward
+    '''
+    enemies = Enemy("Goon", 20, "None", "Hiss", "Nothing", "Just some easy goons to \
+    kill.", 10)
+    if player.is_alive() and enemies.is_alive():
+        action = input("What do you want to do? 'attack', 'run', 'heal'")
+        if action == 'attack':
+        damage = 
 
 
 def introduction():
@@ -203,7 +217,23 @@ def store():
     option = raw_input(' ')
 
     if option in kitties:
-        if 
+        if Player.coins >= kitties[option]:
+            os.system('clear')
+            Player.coins -= kitties [option]
+            Player.kitties.append(option)
+            print("You have bought %s % option")
+
+        else:
+            os.system('clear')
+            print("You don't have enough coins :(")
+            option = raw_input(' ')
+            store()
+        
+    else:
+        os.system('clear')
+        print("That item does't exist")
+        option = raw_input(' ')
+        store()
 
 def game():
     '''This function calls other function and acts as a main game'''
