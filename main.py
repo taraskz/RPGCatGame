@@ -3,7 +3,7 @@
 # Class: CS 30
 # Date: May 30, 2024
 # Coders: Taras K and Trey Z
-# Version: 002
+# Version: 003
 ##############################################################################
 '''This program is a text based game where the player gets to explore and 
 fight enemies using cats, the goal is to save the catverse by defeating the 
@@ -51,6 +51,7 @@ you can buy anything your hearts desires",
     "Cat Ruins": "You have finally made to to the lair of Clawmancer Felisar \
 hopefully you are strong enough to defeat him this time. GOOD LUCK!!!"
 }
+
 
 room_location = {
     "Outskirts of Catville": (0,0), "Catlands": (1,0), "Lake \
@@ -103,7 +104,6 @@ if you want to go back to the menu.")
             return
         else: 
             print("Invalid direction please type it in properly!<3")
-            
 
 
 def introduction():
@@ -141,6 +141,7 @@ quest. Good Luck!!! <3")
             game_exit()
         else:
             print("Please type the right input, thanks. <3")
+
 
 def intro():
     '''This function is the intro to the game to get the user started'''
@@ -191,13 +192,26 @@ def game_exit():
     print("Thanks for player, hope you had a great time <3")
     exit()
 
+kitties = {"Maine":20}
+
+def store():
+    os.system('clear')
+    print("Welcome to the shop!")
+    print("\n What would you like to buy?\n")
+    print("1. Maine")
+    print(" ")
+    option = raw_input(' ')
+
+    if option in kitties:
+        if 
 
 def game():
     '''This function calls other function and acts as a main game'''
     export_map()
     intro()
     menu()
-    
+
+
 #---main----------------------------------------------------------------------
 game()
 #read_map()
