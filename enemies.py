@@ -1,28 +1,19 @@
 class Enemy():
-  def __init__(self, name, health, skills, attack, loot, text, coins):
-      self.name = name
-      self.health = health
-      self.skills = skills
-      self.attack = attack
-      self.loot = loot
-      self.text = text
-      self.coins = coins
+    def __init__(self, name, health, damage, coins):
+        self.name = name
+        self.health = health
+        self.damage = damage
+        self.coins = coins
 
-  def take_damage(self, damage):
-      self.health -= damage
-      if self.health < 0:
-          self.health = 0
+    def take_damage(self, damage):
+        self.health -= damage
+        if self.health < 0:
+            self.health = 0
 
-  def is_alive(self):
-      return self.health > 0
+    def is_alive(self):
+        return self.health > 0 
 
-Clawmancer_Felisar = Enemy("Clawmancer Felisar", 200, "Spawn in goons",
-                            "Scratch", "Catnip",
-                           "It's the dreaded Clawmancer Felisar, \
-watch out!", 200)
+    def attack(self, target):
+        target.health -= self.damage
 
-Goon = Enemy("Goon", 20, "None", "Hiss", "Nothing", "Just some easy goons to \
-kill.", 10)
-
-Sir_Barksalot = Enemy("Sir Barksalot", 120, "Drool", "Barks and Bite", 
-                      "Bone key", "Uh is this a dog?", 100)
+Sir_Barksalot = Enemy("Sir Barksalot", 120, 30, 250)

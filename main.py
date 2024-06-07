@@ -33,28 +33,42 @@ player_cats = []
 
 
 rooms = {
-    "Outskirts of Catville": {"description:" "You are in the starting area \
+    "Outskirts of Catville": {"description": "You are in the starting area \
 of the game, here you can get your first cat companion if you manage to \
-defeat an enemy" "enemy": None},
-    "Catlands": {"description:" "You are in the lands of cats, here is \
-where most non combat cats live in peace" "enemy": Enemy("Goon", 20, \
-"None", "Hiss", "Nothing", "Just some easy goons to kill.", 10)},
-    "Catville City": {"description:""You are in the central city, it's been \
-taken over by Clawmancer Felisar's goons, be careful to not get spotted"},
-    "Lake MacCatzie": {"description:" "You are in front of a beatiful lake, \
-there are catfish everywhere" "enemy": None},
-    "Mount Caterest": {"description:" "In front of you is the biggest \
+defeat an enemy", 
+                              "enemy": None},
+    "Catlands": {"description": "You are in the lands of cats, here is \
+where most non combat cats live in peace", 
+                 "enemy": "Goon"},
+    "Catville City": {"description": "You are in the central city, it's been \
+taken over by Clawmancer Felisar's goons, be careful to not get spotted",
+                     "enemy": None},
+    "Lake MacCatzie": {"description": "You are in front of a beatiful lake, \
+there are catfish everywhere", 
+                       "enemy": None},
+    "Mount Caterest": {"description": "In front of you is the biggest \
 mountain in the catverse, no one has every been able to climb it\
-" "enemy": None},
-    "Catpagne Beach": {"description:" "You are at a warm beach, no enemies \
-managed to get here yet, you are safe for now" "enemy": None},
-    "Catana Desert": {"description:" "Now you are in a desert, its hot \
-and humid in here staying for too long would be bad" "enemy": None},
-    "Cat-Street Mall": {"description:" "You have made it to the shopping \
-center, here you can buy anything your hearts desires" "enemy": None},
-    "Cat Ruins": {"description:" "You have finally made to to the lair of \
+",
+                       "enemy": None},
+    "Catpagne Beach": {"description": "You are at a warm beach, no enemies \
+managed to get here yet, you are safe for now",
+                       "enemy": None},
+    "Catana Desert": {"description": "Now you are in a desert, its hot \
+and humid in here staying for too long would be bad",
+                      "enemy": None},
+    "Cat-Street Mall": {"description": "You have made it to the shopping \
+center, here you can buy anything your hearts desires",
+                        "enemy": None},
+    "Cat Ruins": {"description": "You have finally made to to the lair of \
 Clawmancer Felisar hopefully you are strong enough to defeat him this time. \
-GOOD LUCK!!!" "enemy": None},
+GOOD LUCK!!!",
+                  "enemy": "Clawmancer_Felisar"},
+}
+
+
+enemy_defenitions = {
+    "Goon": Enemy("Goon", 20, 5, 10),
+    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 50, 1000)
 }
 
 
@@ -87,6 +101,7 @@ def movement(direction):
     if new_location in room_location.values():
         current_location = next(room for room, index in room_location.items()
                                if index == new_location)
+        check_for_enemies()
     else:
         print("Unfortunately you can't leave the land of cats try a different \
 direction, unless you want to end the game :(")
@@ -111,7 +126,7 @@ if you want to go back to the menu.")
             print("Invalid direction please type it in properly!<3")
 
 
-def battle():
+def battle(enemy):
     '''This function activates when there are enemies in the area the user
     is in and they are forced to fight them, if they lose the game ends if 
     they win they get a reward
@@ -140,7 +155,7 @@ Health: {cat.health})")
             return
         if enemy.is_alive():
             print(f"{enemy.name} attacks you for {enemy.attack} damage!")
-            player.health -= int(enemy.attack)
+            enemy.attack(player)
         if not player.is_alive():
             print("You have been defeated. Try again")
             game_exit()
@@ -150,7 +165,15 @@ Health: {cat.health})")
             print(f"You gained {enemy.coins} coins.")
             return
             
-            
+
+def check_for_enemies():
+    '''This function checks if there is enemies in the current location
+    and intiates the battle function
+    '''
+    enemy_name = rooms[current_location]["enemy"]
+    if enemy_name:
+        print("An enemy is here! get ready to fight")
+        battle(enemy_defenitions[enemy_name])
 
 
 def introduction():
