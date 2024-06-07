@@ -15,3 +15,4 @@
 - Trey: Edited some of the code, created classes for enemies and came up with the idea of having to kill the dog miniboss and getting the bone key in order to challenge clawmancer felisar.
 ### June 6th
 - Trey: Started to create a shop feature where the player is able to purchase new cats for their adventures. Also edited some more code.
+- Taras: Created a battle feature and havbe been trying to make it work with both the cat class and enem class. Will probabaly take a bit to get it to work flawlessly

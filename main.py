@@ -244,6 +244,7 @@ def menu():
             print("Type 'quit' to quit the game")
             print("Type 'move' to move around the map")
             print("Type 'map' to view the map")
+            print("Type 'money' to see how much money you have")
         elif choice == 'quit':
             game_exit()
         elif choice == 'move':
@@ -253,6 +254,8 @@ def menu():
             read_map()
         elif choice == 'inventory':
             inventory.view_inventory()
+        elif choice == 'money':
+            print(f"You have: {player.coins} coins.")
         else:
             print("Invalid input please type in your action properly!<3")
 
@@ -269,11 +272,11 @@ def store():
     print("Welcome to the shop!")
     print("\n What would you like to buy?\n")
     print("1. Maine")
-    print(" ")
+    print("2. Shorthair ")
     option = raw_input(' ')
 
     if option in kitties:
-        if Player.coins >= kitties[option]:
+        if player.coins >= kitties[option]:
             os.system('clear')
             Player.coins -= kitties [option]
             Player.kitties.append(option)
