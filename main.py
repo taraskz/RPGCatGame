@@ -265,7 +265,7 @@ def game_exit():
     print("Thanks for player, hope you had a great time <3")
     exit()
 
-kitties = {"Maine":20}
+kitties = {"Maine":30}, {"Shorthair":50}
 
 def store():
     os.system('clear')
@@ -278,8 +278,8 @@ def store():
     if option in kitties:
         if player.coins >= kitties[option]:
             os.system('clear')
-            Player.coins -= kitties [option]
-            Player.kitties.append(option)
+            player.coins -= kitties [option]
+            player.kitties.append(option)
             print("You have bought %s % option")
 
         else:
