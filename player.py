@@ -1,8 +1,9 @@
 class Player:
-    def __init__(self, name, health = 100):
+    def __init__(self, name, health = 100, coins = 0):
         '''This function has player name and health'''
         self.name = name
         self.health = health
+        self.coins = coins
 
     def take_damage(self, damage):
         '''Allows player to take damage'''

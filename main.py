@@ -112,12 +112,43 @@ def battle():
     is in and they are forced to fight them, if they lose the game ends if 
     they win they get a reward
     '''
-    enemies = Enemy("Goon", 20, "None", "Hiss", "Nothing", "Just some easy goons to \
+    enemy = Enemy("Goon", 20, "None", "Hiss", "Nothing", "Just some easy goons to \
     kill.", 10)
-    if player.is_alive() and enemies.is_alive():
-        action = input("What do you want to do? 'attack', 'run', 'heal'")
+    while player.is_alive() and enemy.is_alive():
+        print(f"Enemy : {enemy.name} (Health: {enemy.health})")
+        print(f"Your cats: {[cat.name for cat in player_cats]}")
+        action = input("What do you want to do? 'attack', 'run', \
+'heal'").lower()
         if action == 'attack':
-        damage = 
+            if player_cats:
+                print("Choose a cat to attack with:")
+                for i, cat in enumerate(player_cats):
+                    print(f"{i + 1}. {cat.name} (Damage: {cat.damage}, \
+Health: {cat.health})")
+                cat_choice = int(input("Choose: ")) - 1
+                if 0 <= cat_choice < len(player_cats):
+                    chosen_cat = player_cats[cat_choice]
+                    chosen_cat.attack(enemy)
+                    print(f"{chosen_cat.name} attacked {enemy.name} for \
+{chosen_cat.damage}")
+                else:
+                    print("Invalid choice")
+        elif action == 'run':
+            print("You ran away, coward :(")
+            return
+        if enemy.is_alive():
+            print(f"{enemy.name} attacks you for {enemy.attack} damage!")
+            player.health -= int(enemy.attack)
+        if not player.is_alive():
+            print("You have been defeated. Try again")
+            game_exit()
+        elif not enemy.is_alive():
+            print(f"You beat {enemy.name}")
+            player.coins += enemy.coins
+            print(f"You gained {enemy.coins} coins.")
+            return
+            
+            
 
 
 def introduction():
