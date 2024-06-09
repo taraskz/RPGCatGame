@@ -17,3 +17,5 @@
 - Taras: Created a battle feature and havbe been trying to make it work with both the cat class and enem class. Will probabaly take a bit to get it to work flawlessly
 ### June 7
 - Trey: Fixed a bit of code and also started working on the Beta testing survey
+### June 8
+- Taras: Fully developed the fighting feature in the battle function, will need to impliment healing options.

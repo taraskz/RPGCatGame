@@ -15,5 +15,3 @@ class Enemy():
 
     def attack(self, target):
         target.health -= self.damage
-
-Sir_Barksalot = Enemy("Sir Barksalot", 120, 30, 250)

@@ -54,7 +54,7 @@ managed to get here yet, you are safe for now",
                        "enemy": None},
     "Catana Desert": {"description": "Now you are in a desert, its hot \
 and humid in here staying for too long would be bad",
-                      "enemy": None},
+                      "enemy": "Sir_Barksalot"},
     "Cat-Street Mall": {"description": "You have made it to the shopping \
 center, here you can buy anything your hearts desires",
                         "enemy": None},
@@ -67,7 +67,8 @@ GOOD LUCK!!!",
 
 enemy_defenitions = {
     "Goon": Enemy("Goon", 20, 5, 10),
-    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 50, 1000)
+    "Sir_Barksalot": Enemy("Sir Barksalot", 120, 30, 400),
+    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 25, 1000)
 }
 
 
@@ -102,7 +103,7 @@ def movement(direction):
                                if index == new_location)
         check_for_enemies()
     else:
-        print("Unfortunately you can't leave the land of cats try a different \
+        print("\nUnfortunately you can't leave the land of cats try a different \
 direction, unless you want to end the game :(")
 
 
@@ -111,7 +112,7 @@ def movement_menu():
     of the user based on their input
     '''
     while True:
-        print("Here are your movement options or type 'back' \
+        print("\nHere are your movement options or type 'back' \
 if you want to go back to the menu.")
         for direction in directions:
             print(f"- {direction}")
@@ -132,39 +133,51 @@ def battle(enemy):
     '''
     while player.is_alive() and enemy.is_alive():
         print(f"Enemy : {enemy.name} (Health: {enemy.health}, Damage: \
-{enemy.damage})")
-        print(f"Your cats: {[cat.name for cat in player_cats]}")
+{enemy.damage})\n")
         action = input("What do you want to do? 'attack', 'run', \
-'heal'").lower()
+'heal': ").lower()
+        
         if action == 'attack':
             if player_cats:
                 print("Choose a cat to attack with:")
                 for i, cat in enumerate(player_cats):
                     print(f"{i + 1}. {cat.name} (Damage: {cat.damage}, \
 Health: {cat.health})")
-                cat_choice = int(input("Choose: ")) - 1
-                if 0 <= cat_choice < len(player_cats):
-                    chosen_cat = player_cats[cat_choice]
-                    chosen_cat.attack(enemy)
-                    print(f"{chosen_cat.name} attacked {enemy.name} for \
+                try:
+                    cat_choice = int(input("Choose: ")) - 1
+                    if 0 <= cat_choice < len(player_cats):
+                        chosen_cat = player_cats[cat_choice]
+                        chosen_cat.attack(enemy)
+                        print(f"{chosen_cat.name} attacked {enemy.name} for \
 {chosen_cat.damage} damage!")
-                else:
-                    print("Invalid choice")
+                    else:
+                        print("Invalid choice")
+                except:
+                    print()
+                    
         elif action == 'run':
             print("You ran away, coward :(")
             return
+
+        else:
+            print("Invalid input please try again!!!\n")
+            continue
+            
         if enemy.is_alive():
             print(f"{enemy.name} attacks you for {enemy.damage} damage!")
             enemy.attack(player)
             print(f"Your Health: {player.health}")
+            
         else:
             print(f"You beat {enemy.name}")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
             return
+            
         if not player.is_alive():
             print("You have been defeated. Try again")
             game_exit()
+
             
 
 def check_for_enemies():
@@ -173,7 +186,7 @@ def check_for_enemies():
     '''
     enemy_name = rooms[current_location]["enemy"]
     if enemy_name:
-        print("An enemy is here! get ready to fight")
+        print("\nAn enemy is here! get ready to fight")
         battle(enemy_defenitions[enemy_name])
 
 
@@ -187,12 +200,12 @@ def introduction():
     while True:
         int_choice = input("Choose: ")
         if int_choice == 'yes':
-            print("***Welcome player, to the lands of cats and prosperity\
+            print("\n***Welcome player, to the lands of cats and prosperity\
 ***")
             print("Here is an explanation as to what is happening in the \
-world and your mission is to save the world.\n")
+world and your mission.\n")
             print("***Long ago in the land of cats... Everyone lived \
-peacefully amongst each other, enjoying nature and each others company.\
+peacefully amongst each other, enjoying nature and each others company. \
 Both humans and cats found a way to coexist.\n")
             print("However an evil person by the name of Clawmancer Felisar \
 came from the forgotten place called the cat ruins. Him and his gang of evil \
@@ -204,7 +217,7 @@ speculate it's because of his childhood. But thats besides the point.\n")
 that you can defeat his army and save the lands of cats.")
             print("Go ahead and explore the many places in this wonderful \
 land while trying to find good cat companions that will help you in your \
-quest. Good Luck!!! <3")
+quest. Good Luck!!! <3\n")
             return
         elif int_choice == 'no':
             return
@@ -218,7 +231,7 @@ def intro():
     '''This function is the intro to the game to get the user started'''
     introduction()
     while True:
-        print("Choose your starting cat!!!")
+        print("\nChoose your starting cat!!!")
         print("Options: ")
         for cat_name, cat in available_cats.items():
             print(f"- {cat_name}: {cat}")
@@ -226,7 +239,7 @@ def intro():
         if cat_choice in available_cats:
             chosen_cat = available_cats[cat_choice]
             player_cats.append(chosen_cat)
-            print(f"You chose {chosen_cat.name} as your first cat")
+            print(f"\nYou chose {chosen_cat.name} as your first cat")
             return
         elif cat_choice == 'quit':
             game_exit()
@@ -239,13 +252,13 @@ def menu():
     what action to do whenever they want to
     '''
     while True:
-        print(f"You are currently in {current_location}")
+        print(f"\nYou are currently in {current_location}")
         choice = input("Choose your action: ").lower()
         if choice == 'options':
-            print("Type 'quit' to quit the game")
+            print("\nType 'quit' to quit the game")
             print("Type 'move' to move around the map")
             print("Type 'map' to view the map")
-            print("Type 'money' to see how much money you have")
+            print("Type 'money' to see how much money you have\n")
         elif choice == 'quit':
             game_exit()
         elif choice == 'move':
