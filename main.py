@@ -11,12 +11,11 @@ main villian
 '''
 ##############################################################################
 #---imports and global variables----------------------------------------------
-from game_map import export_map, read_map
-from player import Player
-from inventory import Inventory
 from cat import Cat
 from enemies import Enemy
-
+from game_map import export_map, read_map
+from inventory import Inventory
+from player import Player
 
 player = Player(name = "Cat Master")
 inventory = Inventory()
@@ -132,7 +131,8 @@ def battle(enemy):
     they win they get a reward
     '''
     while player.is_alive() and enemy.is_alive():
-        print(f"Enemy : {enemy.name} (Health: {enemy.health})")
+        print(f"Enemy : {enemy.name} (Health: {enemy.health}, Damage: \
+{enemy.damage})")
         print(f"Your cats: {[cat.name for cat in player_cats]}")
         action = input("What do you want to do? 'attack', 'run', \
 'heal'").lower()
@@ -147,23 +147,24 @@ Health: {cat.health})")
                     chosen_cat = player_cats[cat_choice]
                     chosen_cat.attack(enemy)
                     print(f"{chosen_cat.name} attacked {enemy.name} for \
-{chosen_cat.damage}")
+{chosen_cat.damage} damage!")
                 else:
                     print("Invalid choice")
         elif action == 'run':
             print("You ran away, coward :(")
             return
         if enemy.is_alive():
-            print(f"{enemy.name} attacks you for {enemy.attack} damage!")
+            print(f"{enemy.name} attacks you for {enemy.damage} damage!")
             enemy.attack(player)
-        if not player.is_alive():
-            print("You have been defeated. Try again")
-            game_exit()
-        elif not enemy.is_alive():
+            print(f"Your Health: {player.health}")
+        else:
             print(f"You beat {enemy.name}")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
             return
+        if not player.is_alive():
+            print("You have been defeated. Try again")
+            game_exit()
             
 
 def check_for_enemies():
