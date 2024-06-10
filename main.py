@@ -17,6 +17,7 @@ from game_map import export_map, read_map
 from inventory import Inventory
 from player import Player
 
+
 player = Player(name = "Cat Master")
 inventory = Inventory()
 
@@ -26,7 +27,9 @@ available_cats = {
     "Ragdoll": Cat(name = "Ragdoll", damage = 15, health = 40)
     
 }
-
+shop_cats = {
+    
+}
 
 player_cats = []
 
@@ -259,6 +262,8 @@ def menu():
             print("Type 'move' to move around the map")
             print("Type 'map' to view the map")
             print("Type 'money' to see how much money you have\n")
+            print("Type 'shop' to access the shop when you get to Cat-Street \
+Mall")
         elif choice == 'quit':
             game_exit()
         elif choice == 'move':
@@ -270,14 +275,58 @@ def menu():
             inventory.view_inventory()
         elif choice == 'money':
             print(f"You have: {player.coins} coins.")
+        elif choice == 'shop':
+            if current_location == "Cat-Street Mall":
+                shop()
+            else:
+                print("You need to go to Cat-Street Mall!!!")
         else:
             print("Invalid input please type in your action properly!<3")
+
+
+def shop():
+    '''This function is a shop for the user to buy cats when they get to
+    Cat-Street mall'''
+    while True:
+        print("\nWelcome to the Shop! Here you can buy cats to fight.")
+        for cat_name, cat_info in shop_cats.items():
+            cat = cat_info["info"]
+            cost = cat_info["cost"]
+            print(f"- {cat_name}: {cat} (Cost: {cost} coins.)")
+        cat_choice = input("Which cat would you like to buy? ***Type 'back' \
+to exit the shop***").lower()
+        if cat_choice in shop_cats:
+            chosen_cat_info = shop_cats[cat_choice]
+            chosen_cat = chosen_cat_info["cat"]
+            cost = chosen_cat_info["cost"]
+            if player.coins >= cost:
+                player.coins -= cost
+                player_cats.append(chosen_cat)
+                print(f"\nYou bought {chosen_cat.name} for {cost} coins.")
+                print(f"Remaining coins: {player.coins}")
+            else:
+                print("Unfortunately you don't have enough coins to but this \
+cat")
+        elif cat_choice == 'back':
+            return
+        else:
+            print("Invalid choice, please type the name of the cat correctly \
+<3")
+            
 
 
 def game_exit():
     '''This function leaves the game for the user when they want to quit'''
     print("Thanks for player, hope you had a great time <3")
     exit()
+
+
+def game():
+    '''This function calls other function and acts as a main game'''
+    export_map()
+    intro()
+    menu()  
+
 
 kitties = {"Maine":30}, {"Shorthair":50}
 
@@ -307,12 +356,6 @@ def store():
         print("That item does't exist")
         option = raw_input(' ')
         store()
-
-def game():
-    '''This function calls other function and acts as a main game'''
-    export_map()
-    intro()
-    menu()
 
 
 #---main----------------------------------------------------------------------
