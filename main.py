@@ -24,8 +24,8 @@ inventory = Inventory()
 
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
-    
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10),
+    "B": Cat(name = "B", damage = 11000)
 }
 
 
@@ -34,7 +34,7 @@ shop_cats = {
 cost": 40},
     "Bombay": {"cat": Cat(name = "Bombay", damage = 35), "\
 cost": 80},
-    "Siberian": {"cay": Cat(name = "Siberian", damage = 50), "\
+    "Siberian": {"cat": Cat(name = "Siberian", damage = 50), "\
 cost": 110},
     "Munchkin": {"cat": Cat(name = "Munchkin", damage = 80), "\
 cost": 170},
@@ -110,6 +110,10 @@ directions = {
 
 current_location = "Outskirts of Catville"
 
+
+defeated_enemies = set()
+
+
 #---functions-----------------------------------------------------------------
 def movement(direction):
     '''This function handles the movement input of the user in the menu'''
@@ -167,7 +171,7 @@ def battle(enemy):
                     if 0 <= cat_choice < len(player_cats):
                         chosen_cat = player_cats[cat_choice]
                         chosen_cat.attack(enemy)
-                        print(f"{chosen_cat.name} attacked {enemy.name} for \
+                        print(f"\n{chosen_cat.name} attacked {enemy.name} for \
 {chosen_cat.damage} damage!")
                     else:
                         print("Invalid choice")
@@ -183,7 +187,7 @@ def battle(enemy):
             continue
             
         if enemy.is_alive():
-            print(f"{enemy.name} attacks you for {enemy.damage} damage!")
+            print(f"\n{enemy.name} attacks you for {enemy.damage} damage!")
             enemy.attack(player)
             print(f"Your Health: {player.health}")
             
@@ -191,6 +195,7 @@ def battle(enemy):
             print(f"You beat {enemy.name}")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
+            defeated_enemies.add(enemy.name)
             return
             
         if not player.is_alive():
@@ -204,9 +209,10 @@ def check_for_enemies():
     and intiates the battle function
     '''
     enemy_name = rooms[current_location]["enemy"]
-    if enemy_name:
+    if enemy_name and enemy_name not in defeated_enemies:
         print("\nAn enemy is here! get ready to fight")
         battle(enemy_defenitions[enemy_name])
+
 
 
 def introduction():
@@ -304,14 +310,17 @@ def shop():
     '''This function is a shop for the user to buy cats when they get to
     Cat-Street mall'''
     while True:
-        print("\nWelcome to the Shop! Here you can buy cats to fight.")
+        print("\nWelcome to the Shop! Here you can buy cats to fight.\n")
+        print(f"You have: {player.coins} coins.")
         for cat_name, cat_info in shop_cats.items():
-            cat = cat_info["info"]
+            cat = cat_info["cat"]
             cost = cat_info["cost"]
             print(f"- {cat_name}: {cat} (Cost: {cost} coins.)")
-        cat_choice = input("Which cat would you like to buy? ***Type 'back' \
-to exit the shop***").lower()
-        if cat_choice in shop_cats:
+        cat_choice = input("\nWhich cat would you like to buy? ***Type 'back' \
+to exit the shop***").capitalize()
+        if cat_choice == 'Back':
+            return
+        elif cat_choice in shop_cats:
             chosen_cat_info = shop_cats[cat_choice]
             chosen_cat = chosen_cat_info["cat"]
             cost = chosen_cat_info["cost"]
@@ -323,8 +332,6 @@ to exit the shop***").lower()
             else:
                 print("Unfortunately you don't have enough coins to but this \
 cat")
-        elif cat_choice == 'back':
-            return
         else:
             print("Invalid choice, please type the name of the cat correctly \
 <3")
