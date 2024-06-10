@@ -24,21 +24,34 @@ inventory = Inventory()
 
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 15)
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
     
 }
+
+
 shop_cats = {
     "Persian": {"cat": Cat(name = "Persian", damage = 20), "\
-cost": 20},
-    "Munchkin": {"cat": Cat(name = "Munchkin", damage = 50), "\
-    cost": 20},
+cost": 40},
+    "Bombay": {"cat": Cat(name = "Bombay", damage = 35), "\
+cost": 80},
+    "Siberian": {"cay": Cat(name = "Siberian", damage = 50), "\
+cost": 110},
+    "Munchkin": {"cat": Cat(name = "Munchkin", damage = 80), "\
+cost": 170},
+    "Saimese": {"cat": Cat(name = "Saimese", damage = 200), "\
+cost": 580}
 }
 
     
 enemy_defenitions = {
-    "Goon": Enemy("Goon", 20, 10, 10),
-    "Sir_Barksalot": Enemy("Sir Barksalot", 120, 20, 100),
-    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 25, 250)
+    "Stray Cat": Enemy("Stray Cat", 20, 5, 20), #Outscirts of Catville
+    "Goon": Enemy("Goon", 20, 10, 20), #Mount Cateverest
+    "Wild Kitty": Enemy("Wild Kitty", 40, 15, 30), #Catlands
+    "City Beast": Enemy("City Beast", 50, 15, 40), #Catville City
+    "Desert Lynx": Enemy("Desert Lynx", 100, 30, 60), #Catpagne Beach
+    "Lake Panther": Enemy("Lake Panther", 85, 25, 60),
+    "Sir_Barksalot": Enemy("Sir Barksalot", 120, 35, 100), #Catana Desert
+    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 40, 250) #Cat Ruins
 }
 
 

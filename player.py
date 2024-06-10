@@ -1,5 +1,5 @@
 class Player:
-    def __init__(self, name, health = 100, coins = 0):
+    def __init__(self, name, health = 150, coins = 0):
         '''This function has player name and health'''
         self.name = name
         self.health = health
