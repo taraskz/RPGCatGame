@@ -20,4 +20,4 @@
 ### June 8
 - Taras: Fully developed the fighting feature in the battle function, will need to impliment healing options.
 ### June 9
-- Taras: Made a fully functioning shop for the user to buy cats to fight with.
+- Taras: Made a fully functioning shop for the user to buy cats to fight with. Added many cats to shop and enemies around the map.

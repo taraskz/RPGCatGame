@@ -49,7 +49,7 @@ enemy_defenitions = {
     "Wild Kitty": Enemy("Wild Kitty", 40, 15, 30), #Catlands
     "City Beast": Enemy("City Beast", 50, 15, 40), #Catville City
     "Desert Lynx": Enemy("Desert Lynx", 100, 30, 60), #Catpagne Beach
-    "Lake Panther": Enemy("Lake Panther", 85, 25, 60),
+    "Lake Panther": Enemy("Lake Panther", 85, 25, 60), #Lake MacKetzie
     "Sir_Barksalot": Enemy("Sir Barksalot", 120, 35, 100), #Catana Desert
     "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 40, 250) #Cat Ruins
 }
@@ -62,23 +62,23 @@ rooms = {
     "Outskirts of Catville": {"description": "You are in the starting area \
 of the game, here you can get your first cat companion if you manage to \
 defeat an enemy", 
-                              "enemy": None},
+                              "enemy": "Stray Cat"},
     "Catlands": {"description": "You are in the lands of cats, here is \
 where most non combat cats live in peace", 
-                 "enemy": "Goon"},
+                 "enemy": "Wild Kitty"},
     "Catville City": {"description": "You are in the central city, it's been \
 taken over by Clawmancer Felisar's goons, be careful to not get spotted",
-                     "enemy": None},
+                     "enemy": "City Beast"},
     "Lake MacCatzie": {"description": "You are in front of a beatiful lake, \
 there are catfish everywhere", 
-                       "enemy": None},
+                       "enemy": "Lake Panther"},
     "Mount Caterest": {"description": "In front of you is the biggest \
 mountain in the catverse, no one has every been able to climb it\
 ",
-                       "enemy": None},
+                       "enemy": "Goon"},
     "Catpagne Beach": {"description": "You are at a warm beach, no enemies \
 managed to get here yet, you are safe for now",
-                       "enemy": None},
+                       "enemy": "Desert Lynx"},
     "Catana Desert": {"description": "Now you are in a desert, its hot \
 and humid in here staying for too long would be bad",
                       "enemy": "Sir_Barksalot"},
