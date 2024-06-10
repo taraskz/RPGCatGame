@@ -23,13 +23,24 @@ inventory = Inventory()
 
 
 available_cats = {
-    "Sphynx": Cat(name = "Sphynx", damage = 10, health = 50),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 15, health = 40)
+    "Sphynx": Cat(name = "Sphynx", damage = 10),
+    "Ragdoll": Cat(name = "Ragdoll", damage = 15)
     
 }
 shop_cats = {
-    
+    "Persian": {"cat": Cat(name = "Persian", damage = 20), "\
+cost": 20},
+    "Munchkin": {"cat": Cat(name = "Munchkin", damage = 50), "\
+    cost": 20},
 }
+
+    
+enemy_defenitions = {
+    "Goon": Enemy("Goon", 20, 10, 10),
+    "Sir_Barksalot": Enemy("Sir Barksalot", 120, 20, 100),
+    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 25, 250)
+}
+
 
 player_cats = []
 
@@ -65,13 +76,6 @@ center, here you can buy anything your hearts desires",
 Clawmancer Felisar hopefully you are strong enough to defeat him this time. \
 GOOD LUCK!!!",
                   "enemy": "Clawmancer_Felisar"},
-}
-
-
-enemy_defenitions = {
-    "Goon": Enemy("Goon", 20, 5, 10),
-    "Sir_Barksalot": Enemy("Sir Barksalot", 120, 30, 400),
-    "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 25, 1000)
 }
 
 
@@ -144,8 +148,7 @@ def battle(enemy):
             if player_cats:
                 print("Choose a cat to attack with:")
                 for i, cat in enumerate(player_cats):
-                    print(f"{i + 1}. {cat.name} (Damage: {cat.damage}, \
-Health: {cat.health})")
+                    print(f"{i + 1}. {cat.name} (Damage: {cat.damage})")
                 try:
                     cat_choice = int(input("Choose: ")) - 1
                     if 0 <= cat_choice < len(player_cats):
