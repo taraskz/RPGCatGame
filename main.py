@@ -24,8 +24,7 @@ inventory = Inventory()
 
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 10),
-    "B": Cat(name = "B", damage = 11000)
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
 }
 
 
@@ -38,18 +37,18 @@ cost": 80},
 cost": 110},
     "Munchkin": {"cat": Cat(name = "Munchkin", damage = 80), "\
 cost": 170},
-    "Saimese": {"cat": Cat(name = "Saimese", damage = 200), "\
-cost": 580}
+    "Siamese": {"cat": Cat(name = "Siamese", damage = 200), "\
+cost": 580} # user can get this if they beat every enemy in the game
 }
 
     
 enemy_defenitions = {
-    "Stray Cat": Enemy("Stray Cat", 20, 5, 20), #Outscirts of Catville
-    "Goon": Enemy("Goon", 20, 10, 20), #Mount Cateverest
+    "Stray Cat": Enemy("Stray Cat", 20, 5, 20), #Outskirts of Catville
+    "Goon": Enemy("Goon", 20, 10, 20), #Mount Caterest
     "Wild Kitty": Enemy("Wild Kitty", 40, 15, 30), #Catlands
     "City Beast": Enemy("City Beast", 50, 15, 40), #Catville City
     "Desert Lynx": Enemy("Desert Lynx", 100, 30, 60), #Catpagne Beach
-    "Lake Panther": Enemy("Lake Panther", 85, 25, 60), #Lake MacKetzie
+    "Lake Panther": Enemy("Lake Panther", 85, 25, 60), #Lake MacCatzie
     "Sir_Barksalot": Enemy("Sir Barksalot", 120, 35, 100), #Catana Desert
     "Clawmancer_Felisar": Enemy("Clawmancer Felisar", 200, 40, 250) #Cat Ruins
 }
@@ -69,7 +68,7 @@ where most non combat cats live in peace",
     "Catville City": {"description": "You are in the central city, it's been \
 taken over by Clawmancer Felisar's goons, be careful to not get spotted",
                      "enemy": "City Beast"},
-    "Lake MacCatzie": {"description": "You are in front of a beatiful lake, \
+    "Lake MacCatzie": {"description": "You are in front of a beautiful lake, \
 there are catfish everywhere", 
                        "enemy": "Lake Panther"},
     "Mount Caterest": {"description": "In front of you is the biggest \
@@ -160,7 +159,6 @@ def battle(enemy):
 {enemy.damage})\n")
         action = input("What do you want to do? 'attack', 'run', \
 'heal': ").lower()
-        
         if action == 'attack':
             if player_cats:
                 print("Choose a cat to attack with:")
@@ -177,31 +175,25 @@ def battle(enemy):
                         print("Invalid choice")
                 except:
                     print()
-                    
         elif action == 'run':
             print("You ran away, coward :(")
             return
-
         else:
             print("Invalid input please try again!!!\n")
             continue
-            
         if enemy.is_alive():
             print(f"\n{enemy.name} attacks you for {enemy.damage} damage!")
             enemy.attack(player)
             print(f"Your Health: {player.health}")
-            
         else:
             print(f"You beat {enemy.name}")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
             defeated_enemies.add(enemy.name)
             return
-            
         if not player.is_alive():
             print("You have been defeated. Try again")
             game_exit()
-
             
 
 def check_for_enemies():
@@ -278,6 +270,7 @@ def menu():
     '''
     while True:
         print(f"\nYou are currently in {current_location}")
+        print("Type 'options' to see your options")
         choice = input("Choose your action: ").lower()
         if choice == 'options':
             print("\nType 'quit' to quit the game")
@@ -351,36 +344,5 @@ def game():
     menu()  
 
 
-kitties = {"Maine":30}, {"Shorthair":50}
-
-def store():
-    os.system('clear')
-    print("Welcome to the shop!")
-    print("\n What would you like to buy?\n")
-    print("1. Maine")
-    print("2. Shorthair ")
-    option = raw_input(' ')
-
-    if option in kitties:
-        if player.coins >= kitties[option]:
-            os.system('clear')
-            player.coins -= kitties [option]
-            player.kitties.append(option)
-            print("You have bought %s % option")
-
-        else:
-            os.system('clear')
-            print("You don't have enough coins :(")
-            option = raw_input(' ')
-            store()
-        
-    else:
-        os.system('clear')
-        print("That item does't exist")
-        option = raw_input(' ')
-        store()
-
-
 #---main----------------------------------------------------------------------
 game()
-#read_map()
