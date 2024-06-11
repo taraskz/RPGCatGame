@@ -14,12 +14,10 @@ main villian
 from cat import Cat
 from enemies import Enemy
 from game_map import export_map, read_map
-from inventory import Inventory
 from player import Player
 
 
 player = Player(name = "Cat Master")
-inventory = Inventory()
 
 
 available_cats = {
@@ -41,7 +39,7 @@ cost": 170},
 cost": 580} # user can get this if they beat every enemy in the game
 }
 
-    
+
 enemy_defenitions = {
     "Stray Cat": Enemy("Stray Cat", 20, 5, 20), #Outskirts of Catville
     "Goon": Enemy("Goon", 20, 10, 20), #Mount Caterest
@@ -194,7 +192,7 @@ def battle(enemy):
         if not player.is_alive():
             print("You have been defeated. Try again")
             game_exit()
-            
+
 
 def check_for_enemies():
     '''This function checks if there is enemies in the current location
@@ -204,7 +202,6 @@ def check_for_enemies():
     if enemy_name and enemy_name not in defeated_enemies:
         print("\nAn enemy is here! get ready to fight")
         battle(enemy_defenitions[enemy_name])
-
 
 
 def introduction():
@@ -328,7 +325,7 @@ cat")
         else:
             print("Invalid choice, please type the name of the cat correctly \
 <3")
-            
+
 
 
 def game_exit():
