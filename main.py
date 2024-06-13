@@ -3,7 +3,7 @@
 # Class: CS 30
 # Date: May 30, 2024
 # Coders: Taras K and Trey Z
-# Version: 003
+# Version: 004
 ##############################################################################
 '''This program is a text based game where the player gets to explore and 
 fight enemies using cats, the goal is to save the catverse by defeating the 
@@ -155,8 +155,8 @@ def battle(enemy):
     while player.is_alive() and enemy.is_alive():
         print(f"Enemy : {enemy.name} (Health: {enemy.health}, Damage: \
 {enemy.damage})\n")
-        action = input("What do you want to do? 'attack', 'run', \
-'heal': ").lower()
+        action = input("What do you want to do? input 'attack' or 'run', \
+: ").lower()
         if action == 'attack':
             if player_cats:
                 print("Choose a cat to attack with:")
@@ -188,6 +188,13 @@ def battle(enemy):
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
             defeated_enemies.add(enemy.name)
+            if enemy.name == "Clawmancer_Felisar":
+                print("\nCongradulations you have defeated Clawmancer \
+Felisar and saved the land of cats from his evil gang of cats that \
+terrorized the residents for years. The residents throw you a party \
+as a thanks for everything you've done.")
+                print("\nThanks for playing our game, hope you had fun <3")
+                game_exit()
             return
         if not player.is_alive():
             print("You have been defeated. Try again")
@@ -273,9 +280,9 @@ def menu():
             print("\nType 'quit' to quit the game")
             print("Type 'move' to move around the map")
             print("Type 'map' to view the map")
-            print("Type 'money' to see how much money you have\n")
+            print("Type 'money' to see how much money you have")
             print("Type 'shop' to access the shop when you get to Cat-Street \
-Mall")
+Mall\n")
         elif choice == 'quit':
             game_exit()
         elif choice == 'move':
@@ -283,8 +290,6 @@ Mall")
         elif choice == 'map':
             print("Here you go <3")
             read_map()
-        elif choice == 'inventory':
-            inventory.view_inventory()
         elif choice == 'money':
             print(f"You have: {player.coins} coins.")
         elif choice == 'shop':
@@ -314,7 +319,9 @@ to exit the shop***").capitalize()
             chosen_cat_info = shop_cats[cat_choice]
             chosen_cat = chosen_cat_info["cat"]
             cost = chosen_cat_info["cost"]
-            if player.coins >= cost:
+            if any(cat.name == chosen_cat.name for cat in player_cats):
+                print("You already own this cat, can't buy him again.")
+            elif player.coins >= cost:
                 player.coins -= cost
                 player_cats.append(chosen_cat)
                 print(f"\nYou bought {chosen_cat.name} for {cost} coins.")
@@ -330,7 +337,7 @@ cat")
 
 def game_exit():
     '''This function leaves the game for the user when they want to quit'''
-    print("Thanks for player, hope you had a great time <3")
+    print("Thanks for playing, hope you had a great time <3")
     exit()
 
 

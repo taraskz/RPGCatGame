@@ -20,6 +20,7 @@
 
 ### Version 4 
 - Fix code/errors after beta testing / Both
+- Add an ending, don't let user buy more then one of the same cat, 
 > Deadline : _June 14th_
 
 ### Version 5

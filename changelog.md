@@ -23,4 +23,8 @@
 - Taras: Made a fully functioning shop for the user to buy cats to fight with. Added many cats to shop and enemies around the map.
 ### June 10
 - Trey: Edited some code again and finished the beta testing survey.
-- Taras: Survey
+- Taras: Survey, deleted inventory since we dont use it, tried to make a healing ability in battle but gave up on it
+### June 12
+- Both: Both of us played other games and put feedback on them, but we also got some feedback on ours
+### June 13
+- Both: Listened to our feedback by adding an ending and fixing some coding errors
