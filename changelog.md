@@ -28,3 +28,4 @@
 - Both: Both of us played other games and put feedback on them, but we also got some feedback on ours
 ### June 13
 - Both: Listened to our feedback by adding an ending and fixing some coding errors
+- Taras: Added an ending message when defeating the final boss of the game. Then made it so the user can't buy the same cat more then once in the shop.

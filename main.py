@@ -20,12 +20,15 @@ from player import Player
 player = Player(name = "Cat Master")
 
 
+# starting cats
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10),
+    "B": Cat(name = "B", damage = 1000)
 }
 
 
+# cats in the shop
 shop_cats = {
     "Persian": {"cat": Cat(name = "Persian", damage = 20), "\
 cost": 40},
@@ -35,12 +38,13 @@ cost": 80},
 cost": 110},
     "Munchkin": {"cat": Cat(name = "Munchkin", damage = 80), "\
 cost": 170},
-    "Siamese": {"cat": Cat(name = "Siamese", damage = 200), "\
-cost": 580} # user can get this if they beat every enemy in the game
+    "Siamese": {"cat": Cat(name = "Siamese", damage = 100), "\
+cost": 330} 
 }
 
 
-enemy_defenitions = {
+# enemies and their stats
+enemy_definitions = {
     "Stray Cat": Enemy("Stray Cat", 20, 5, 20), #Outskirts of Catville
     "Goon": Enemy("Goon", 20, 10, 20), #Mount Caterest
     "Wild Kitty": Enemy("Wild Kitty", 40, 15, 30), #Catlands
@@ -52,6 +56,7 @@ enemy_defenitions = {
 }
 
 
+# 
 player_cats = []
 
 
@@ -70,11 +75,11 @@ taken over by Clawmancer Felisar's goons, be careful to not get spotted",
 there are catfish everywhere", 
                        "enemy": "Lake Panther"},
     "Mount Caterest": {"description": "In front of you is the biggest \
-mountain in the catverse, no one has every been able to climb it\
+mountain in the catverse, no one has ever been able to climb it\
 ",
                        "enemy": "Goon"},
     "Catpagne Beach": {"description": "You are at a warm beach, no enemies \
-managed to get here yet, you are safe for now",
+managed to get here yet, you are safe for now...",
                        "enemy": "Desert Lynx"},
     "Catana Desert": {"description": "Now you are in a desert, its hot \
 and humid in here staying for too long would be bad",
@@ -98,17 +103,17 @@ MacCatzie": (2,0), "Mount Caterest": (0,-1), "Catville City": (1,-1),
 
 
 directions = {
-    "north": (0,1),
-    "south": (0,-1),
-    "west": (-1,0),
-    "east": (1,0)
+    "north": (0,1), # up
+    "south": (0,-1), # down
+    "west": (-1,0), # left
+    "east": (1,0) # right
 }
 
 
-current_location = "Outskirts of Catville"
+current_location = "Outskirts of Catville" # startung location
 
 
-defeated_enemies = set()
+defeated_enemies = set() # enemy that is defeated moves here
 
 
 #---functions-----------------------------------------------------------------
@@ -160,6 +165,7 @@ def battle(enemy):
         if action == 'attack':
             if player_cats:
                 print("Choose a cat to attack with:")
+                # makes the user input numbers instead of printing cat name
                 for i, cat in enumerate(player_cats):
                     print(f"{i + 1}. {cat.name} (Damage: {cat.damage})")
                 try:
@@ -170,9 +176,11 @@ def battle(enemy):
                         print(f"\n{chosen_cat.name} attacked {enemy.name} for \
 {chosen_cat.damage} damage!")
                     else:
-                        print("Invalid choice")
+                        print("Invalid choice, please try again!!!\n")
+                        continue
                 except:
-                    print()
+                    print("Invalid choice\n")
+                    continue
         elif action == 'run':
             print("You ran away, coward :(")
             return
@@ -187,9 +195,10 @@ def battle(enemy):
             print(f"You beat {enemy.name}")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
+            player.health = 150 # resets player health
             defeated_enemies.add(enemy.name)
             if enemy.name == "Clawmancer_Felisar":
-                print("\nCongradulations you have defeated Clawmancer \
+                print("\nCongratulations you have defeated Clawmancer \
 Felisar and saved the land of cats from his evil gang of cats that \
 terrorized the residents for years. The residents throw you a party \
 as a thanks for everything you've done.")
@@ -208,7 +217,7 @@ def check_for_enemies():
     enemy_name = rooms[current_location]["enemy"]
     if enemy_name and enemy_name not in defeated_enemies:
         print("\nAn enemy is here! get ready to fight")
-        battle(enemy_defenitions[enemy_name])
+        battle(enemy_definitions[enemy_name])
 
 
 def introduction():
@@ -320,14 +329,14 @@ to exit the shop***").capitalize()
             chosen_cat = chosen_cat_info["cat"]
             cost = chosen_cat_info["cost"]
             if any(cat.name == chosen_cat.name for cat in player_cats):
-                print("You already own this cat, can't buy him again.")
+                print("\nYou already own this cat, can't buy it again.")
             elif player.coins >= cost:
                 player.coins -= cost
                 player_cats.append(chosen_cat)
                 print(f"\nYou bought {chosen_cat.name} for {cost} coins.")
                 print(f"Remaining coins: {player.coins}")
             else:
-                print("Unfortunately you don't have enough coins to but this \
+                print("Unfortunately you don't have enough coins to buy this \
 cat")
         else:
             print("Invalid choice, please type the name of the cat correctly \
@@ -345,7 +354,7 @@ def game():
     '''This function calls other function and acts as a main game'''
     export_map()
     intro()
-    menu()  
+    menu()
 
 
 #---main----------------------------------------------------------------------
