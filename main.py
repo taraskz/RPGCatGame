@@ -23,8 +23,7 @@ player = Player(name = "Cat Master")
 # starting cats
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 10),
-    "B": Cat(name = "B", damage = 1000)
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
 }
 
 
@@ -283,6 +282,7 @@ def menu():
     '''
     while True:
         print(f"\nYou are currently in {current_location}")
+        print(f"{rooms[current_location]['description']}\n")
         print("Type 'options' to see your options")
         choice = input("Choose your action: ").lower()
         if choice == 'options':
