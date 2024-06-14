@@ -1,3 +1,4 @@
+# class for enemies
 class Enemy():
     def __init__(self, name, health, damage, coins):
         self.name = name

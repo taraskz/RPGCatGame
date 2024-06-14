@@ -26,6 +26,6 @@ Respiratory for a cat fighting game Trey and I are making
 - **Classes for player/inventory/enemy** : _June 5th_
 - **Shop and battle feature** : _June 11th_
 - **Get feedback from beta testers** : _June 12th_
-- **Polish the game/add nice to haves if there is time** : _June 19th_
+- **Polish the game/add nice to haves if there is time** : _June 14th_
 
 

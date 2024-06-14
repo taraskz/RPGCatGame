@@ -25,5 +25,5 @@
 
 ### Version 5
 - Add nice-to-have things if there is time / Both
->Deadline : _June 19th_
+>Deadline : _June 14th_
   

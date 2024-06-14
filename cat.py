@@ -1,3 +1,4 @@
+# class for cats
 class Cat:
     def __init__(self, name, damage):
         self.name = name
