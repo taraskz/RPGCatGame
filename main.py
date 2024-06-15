@@ -23,8 +23,7 @@ player = Player(name = "Cat Master")
 # starting cats
 available_cats = {
     "Sphynx": Cat(name = "Sphynx", damage = 10),
-    "Ragdoll": Cat(name = "Ragdoll", damage = 10),
-    "B": Cat(name = "B", damage = 10000)
+    "Ragdoll": Cat(name = "Ragdoll", damage = 10)
 }
 
 
@@ -111,7 +110,7 @@ directions = {
 }
 
 
-current_location = "Catana Desert" # starting location
+current_location = "Outskirts of Catville" # starting location
 
 
 defeated_enemies = set() # enemy that is defeated moves here
@@ -143,7 +142,7 @@ def movement_menu():
 if you want to go back to the menu.")
         for direction in directions:
             print(f"- {direction}")
-        direction = input("Choose: ")
+        direction = input("Choose: ").strip().lower() # better user handling
         if direction in directions:
             movement(direction)
             return
@@ -197,7 +196,6 @@ for {chosen_cat.damage} damage!")
             player.coins += enemy.coins
             print(f"You gained {enemy.coins} coins.")
             player.health = 150 # resets player health
-            #defeated_enemies.add(enemy.name)
             if enemy.name == "Clawmancer Felisar":
                 print("\nCongratulations you have defeated Clawmancer \
 Felisar and saved the land of cats from his evil gang of cats that \
